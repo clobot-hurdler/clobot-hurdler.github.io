@@ -1,8 +1,8 @@
 permalink: /:categories/:title.html
 url: "http://pasindud.github.io/jekyll-masonry/"
 full_name: "Your Full Name"
-first_name: "First Name"
-last_name: "Last Name"
+first_name: "Hurdler"
+last_name: "Clobot"
 blog_title: "Blog title "
 author_img_name_path: "/images/users/user.jpg"
 disqus_shortname: "pasinduland"
