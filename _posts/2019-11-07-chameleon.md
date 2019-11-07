@@ -4,7 +4,7 @@ title: Chameleon
 category: blog
 tags: [Chameleon, Navigation solution, clobot, hurdler]  
 summary: comming soon!!! 이기종 로봇에 적용가능한 실내/외 자율주행 솔루션
-image: /images/blog/roscon2019.png
+image: /images/blog/chameleon.jpg
 ---
 
 클로봇, 카멜레온
