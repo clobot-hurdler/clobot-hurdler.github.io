@@ -1,3 +1,12 @@
+---
+layout: blog
+title: 클로봇 기술 블로그 
+category: blog
+tags: [Clobot, Tech. Blog, 기술블로그, CROMS, Chameleon, hurdler]  
+summary: 클로봇 기술블로그 
+image: /images/blog/clobot-hurdler.png
+---
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/clobot-hurdler/clobot-hurdler.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
