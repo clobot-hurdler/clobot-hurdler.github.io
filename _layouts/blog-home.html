@@ -43,10 +43,10 @@
 							{% endif %}
 							<div class="postcontent">
 					<a href='{{post.url}}'><h1 class='post-title'>{{post.title}}</h1></a>
-								<div class='post-date'>{{ post.date | date: "%B %d, %Y"}}
-									<p>{{post.user_name}}</p>
-									<img src="{{post.user_img}}" width='30' height='30'/>
-									
+								<div class='user'>
+									<p class='post-date'>{{ post.date | date: "%B %d, %Y"}}</p>
+									<p> {{post.user_name}} </p>
+									<img src="{{post.user_img}}" width='40' height='40'/>									
 								</div>
 								<div class='post-content'>{{post.summary}}</div>
 							</div>
