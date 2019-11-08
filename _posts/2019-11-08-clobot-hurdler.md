@@ -7,9 +7,17 @@ summary: 클로봇 기술블로그
 image: /images/blog/clobot-hurdler.png
 ---
 
-## [클로봇](https://https://www.clobot.co.kr/)  기술블로그에 오신걸 환영합니다 
+## 클로봇  기술블로그에 오신걸 환영합니다. 
 
-You can use the [editor on GitHub](https://github.com/clobot-hurdler/clobot-hurdler.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+[클로봇](https://https://www.clobot.co.kr/)에서 기술불로그는 운영하는 목적은 다음과 같습니다. 
+
+- Bulleted
+- Bulleted
+- Bulleted
+
+![Hurdler](/images/blog/clobot-hurdler.png)
+
+to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
