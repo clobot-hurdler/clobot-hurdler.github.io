@@ -15,6 +15,8 @@ image: /images/blog/clobot-hurdler.png
 - Bulleted
 - Bulleted
 
+![Hurdle](/images/blog/hurdle.png)
+
 ![Hurdler](/images/blog/clobot-hurdler.png)
 
 to maintain and preview the content for your website in Markdown files.
