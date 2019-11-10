@@ -1,11 +1,11 @@
 permalink: /:categories/:title.html
-url: ""
+url: "https://clobot-hurdler-github-io"
 full_name: "Clobot-Hurdler"
 first_name: "Clobot"
 last_name: "Hurdler"
 blog_title: "Blog title "
 author_img_name_path: "/images/users/user.jpg"
-disqus_shortname: "pasinduland"
+disqus_shortname: "clobot-hurdler.github-io"
 copyright_year: "2019"
 google_analytics_code: ""
 aboutme: "Something about the author here"
