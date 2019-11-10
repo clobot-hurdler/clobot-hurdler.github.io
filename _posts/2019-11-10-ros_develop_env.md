@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: default
 title: ROS 디버깅 개발환경 설정 
 category: blog
 tags: [ROS, debugging, gdb, dump file]   
