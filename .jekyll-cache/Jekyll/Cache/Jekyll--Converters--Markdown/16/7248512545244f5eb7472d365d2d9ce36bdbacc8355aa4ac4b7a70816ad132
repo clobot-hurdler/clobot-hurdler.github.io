@@ -1,0 +1,122 @@
+I"�<h2 id="ros-디버깅-개발환경-설정">ROS 디버깅 개발환경 설정</h2>
+
+<h2 id="core-dump-파일-생성-셋팅">core dump 파일 생성 셋팅</h2>
+<p>ros 플랫폼을 이용한 개발이 아니더라도, 리눅스환경에서의 디버깅은 윈도우에 비해 쉽지 않다. 
+보통 자신이 개발하거나 혹은 남이 개발한 실행파일에서 crash가 나면, segmentation fault (core dumped) 라는 메세지가 뜬다. 
+core파일을 찾을수 없다면 우선 다음 명령어를 통해 코어파일 사이즈를 확인한다.</p>
+
+<ul>
+  <li>ulimit -a</li>
+</ul>
+
+<p><img src="/images/ros_devel_env/1.png" alt="1" /></p>
+
+<p>그림에서 빨간색 선으로 표시한 것처럼 core파일의 크기가 0으로 설정되어 있으면 core파일이 생성되지 않는다. 
+다음 명령어를 통하면 코어파일의 크기를 무한대로 설정할 수 있다.</p>
+
+<ul>
+  <li>ulimit -c unlimited</li>
+</ul>
+
+<p><img src="/images/ros_devel_env/2.png" alt="2" /></p>
+
+<p>하지만 시스템을 reboot하면 다시 설정값이 초기화 되기 때문에 영구적으로 설정하기 위해서는 <strong>limits.conf을 수정</strong>해야한다.</p>
+
+<ul>
+  <li>vi /etc/security/limits.conf</li>
+  <li>빨간색 박스로 표시된 부분에서 주석을(#) 지우고 <strong>core가 명시된 부분의 value 값을 0에서 -1</strong>로 변경</li>
+</ul>
+
+<p><img src="/images/ros_devel_env/3.png" alt="2" /></p>
+
+<p>코어 파일에 pid와 sysctl.conf 파일 수정한다. 
+vi /etc/sysctl.conf
+kernel.core_uses_pid = 1
+kernel.core_pattern = core.%e</p>
+
+<p>바로 적용하고 싶을때</p>
+
+<p>sysctl -p</p>
+
+<p>catkin_make -DCMAKE_BUILD_TYPE=RelWithDebInfo</p>
+
+<p>941720</p>
+
+<p><img src="/images/ros_devel_env/2.png" alt="2" /></p>
+
+<h2 id="roscon-2018-topic">Roscon 2018 Topic</h2>
+<ul>
+  <li>gazebo를 사용하여 다양한 환경(우주, 해저) 등을 구성하여 시뮬레이터 개발</li>
+  <li>Webviz</li>
+  <li>ROS1 -&gt; ROS2 Migration</li>
+  <li>DDS 를 이용한 보안 취약점 해결</li>
+  <li>클라우드 베이스 SLAM</li>
+  <li>ROS2 nodejs 지원</li>
+  <li>ROS 디버깅 Tool을 소개하였지만 취약</li>
+</ul>
+
+<h2 id="workshop--keynote">Workshop &amp; Keynote</h2>
+
+<p>워크샵은 ‘How to use OpenAI baselines to train ROS robots’ 세션에 참석하였다. 
+클라우드에서 ROS 시뮬레이션을 제공하는 The Construct 업체에서 진행하였고, Machine Learning 기법 중 강화학습을 통한 로봇 제어를 예제 코드와 패키지 구성을 따라하며 직접 실습 할 수 있었다. 
+Keynote 주제 중 하나는 ‘Robotics Middleware Framework for Hospitals - redefining the approach Singapore Public Healthcare’ 로, 
+실제 다개체 로봇을 Healthcare에 적용한 사례였고, 여러대의 로봇이 엘리베이터 탑승을 포함한 자율 주행하는 모습이 인상적이었다.</p>
+
+<p><img src="/images/blog/r_2.png" alt="Hurdler" /> <img src="/images/blog/r_2_2.png" alt="Hurdler" /></p>
+
+<h2 id="ros2">ROS2</h2>
+
+<p>ROS1은 2020년 5월을 마지막 배포로 <strong>2025년 지원을 종료</strong>한다고 하여, ROS를 이용하는 회사나 학교에서 <strong>ROS2로의 전환은 필수</strong>라고 한다. 
+발표에서도 ROS2 관련한 내용이 많았다. ROS1과의 차이 (Realtime 제어, DDS Middleware 채택, QoS 설정, Communication Policy, 보안, RTOS 적용 등)에 대한 내용을 발표하거나, 
+ROS2 Launch Configuration, Composable node 실행 데모를 발표에서 직접 보여주기도 하였다. 
+또한 Tier IV의 Autoware ROS2 Migration, Intel의 ROS2 Navigation 패키지 소개 등 ROS2 관련 패키지에 대한 발표를 들을 수 있었다.</p>
+
+<p><img src="/images/blog/r_3.png" alt="Hurdler" /></p>
+
+<h2 id="visualization-tools">Visualization Tools</h2>
+
+<p>ROS를 이용한 로봇의 센서, 알고리즘 등의 출력 데이터를 시각화하여 보고자 할 때 기존 Rviz tool은 ROS를 설치해야 사용할 수 있는 툴이었는데, 
+Cruise Automation에서는 ROS 설치 없이, <strong>browser-based</strong>로 백데이터를 분석할 수 있는 <strong>Webviz</strong> 를 발표하였다. 
+향후에는 스트리밍 서비스를 제공할 예정이라고 한다. 또한, 데이터 사이언스 프로그램을 할 때 프로토타핑으로 유용하게 쓰이는 Jupyter notebook을 ROS 개발에 이용하여 빠르게 테스트 할 수 있는 jupyter-ros 패키지에 관한 발표, 
+ROS 개발용 IDE 중 Microsoft VSCode ROS extension 적용을 통한 디버깅 방법 등에 대한 발표가 있었다.</p>
+
+<p><img src="/images/blog/r_4.png" alt="Hurdler" /> <img src="/images/blog/r_4_2.png" alt="Hurdler" />
+<img src="/images/blog/r_5.png" alt="Hurdler" /> <img src="/images/blog/r_5_2.png" alt="Hurdler" /></p>
+
+<h2 id="manipulator">Manipulator</h2>
+
+<p>Manipulation 트랙에서는 Fetch Manipulator 대회 경험에 대한 발표, 머신러닝 등 모듈을 포함한 manipulator package 소개( OpenVINO ),  joint-link 관계 스크립트(SDFormat)의 업데이트 된 내용 등에 대한 발표가 있었다.</p>
+
+<p><img src="/images/blog/r_6.png" alt="Hurdler" /> <img src="/images/blog/r_6_2.png" alt="Hurdler" /></p>
+
+<h2 id="etc">etc.</h2>
+
+<ul>
+  <li>카네기 멜론 대학에서는 ROS 관련 질문과 버그리스트를 분석하여 <strong>ros-lint</strong> 를 만들어 제공</li>
+  <li>Gazebo simulator 업데이트( ROS2 적용, Realistic modeling )</li>
+  <li>RxROS programming ( 비동기 데이터 스트리밍 방식 )</li>
+  <li>Robot Application Cloud 분산시스템</li>
+</ul>
+
+<p><img src="/images/blog/r_7.png" alt="Hurdler" /></p>
+
+<h2 id="exibition">Exibition</h2>
+
+<p><img src="/images/blog/r-8.png" alt="Hurdler" /></p>
+
+<h2 id="lightning-talk">Lightning Talk</h2>
+
+<p>Next year? ROSCon 2020?</p>
+
+<p><img src="/images/blog/r-9.png" alt="Hurdler" /></p>
+
+<h2 id="시사점">시사점</h2>
+
+<p><img src="/images/blog/r-17.png" alt="Hurdler" /></p>
+
+<h2 id="macau">Macau</h2>
+
+<p><img src="/images/blog/r_11.png" alt="Hurdler" />
+<img src="/images/blog/r_12.png" alt="Hurdler" /></p>
+
+:ET

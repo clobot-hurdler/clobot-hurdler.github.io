@@ -1,0 +1,7 @@
+I"<p>This is a template with masonry to get the theme</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/pasindud/jekyll-masonry-theme
+</code></pre></div></div>
+
+<p>Edit the _config.yml to change your settings</p>
+:ET
