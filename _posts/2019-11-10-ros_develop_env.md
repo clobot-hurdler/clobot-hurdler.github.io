@@ -7,7 +7,7 @@ summary: ros 플랫폼 디버깅 환경설정
 image: /images/blog/ros_devel_env/ros_devel_env.png
 user_img: /images/users/brian.png
 user_name: 브라이언
-comments: true
+comments: on
 ---
 
 ## ROS 디버깅 개발환경 설정
